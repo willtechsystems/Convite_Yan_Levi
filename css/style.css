@@ -85,7 +85,7 @@ body {
   width: 100%;
   max-width: 395px;
   border-radius: 34px;
-  padding: 38px 20px 20px 20px;
+  padding: 56px 20px 20px 20px;
   text-align: center;
   box-shadow: 
     0 16px 40px rgba(78, 102, 66, 0.24),
@@ -103,13 +103,13 @@ body {
   z-index: 2;
 }
 
-/* LAÇO XADREZ VERDE NO TOPO DO CARD */
+/* LAÇO XADREZ VERDE NO TOPO DO CARD (POSICIONADO ACIMA PARA NÃO COBRIR O TEXTO) */
 .laco-topo-wrapper {
   position: absolute;
-  top: -32px;
+  top: -40px;
   left: 50%;
   transform: translateX(-50%);
-  width: 126px;
+  width: 112px;
   z-index: 5;
   pointer-events: none;
 }

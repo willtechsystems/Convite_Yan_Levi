@@ -25,7 +25,11 @@ const CONFIG = {
   audioFundo: "assets/som_fundo.mp3",
   audioEnvelope: "assets/som_envelope.mp3",
 
-  // Configuração do Loop de Áudio (Tempo máximo de reprodução em segundos; 0 = música inteira)
+  // Configuração de Volumes e Fade-Out do Áudio
+  volumeEnvelope: 0.15,        // Volume suave na abertura do envelope (15%)
+  volumeMusicaInicial: 0.85,   // Começa mais alto ao abrir o envelope (85%)
+  volumeMusicaFinal: 0.22,     // Vai baixando suavemente em fade-out até 22%
+  duracaoFadeSegundos: 18,     // Tempo da transição suave do volume em segundos
   tempoMaximoAudioSegundos: 0,
 
   // Contato do WhatsApp da Contratante (Atualizar com o número da mamãe/cliente)
@@ -52,6 +56,6 @@ const CONFIG = {
 
   // Sugestões extras opcionais (exibidas junto com as lojas no modal)
   sugestoesPresente: [
-    "🧷 Sugestão de Fralda: Tamanho RN"
+    "🧷 Sugestão de Fraldas: Tamanhos RN, M e G"
   ]
 };

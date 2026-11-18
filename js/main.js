@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const audioEnvelope = document.getElementById("audio-envelope");
     if (audioEnvelope && CONFIG.audioEnvelope) {
       audioEnvelope.src = CONFIG.audioEnvelope;
-      audioEnvelope.volume = 0.6;
+      audioEnvelope.volume = typeof CONFIG.volumeEnvelope === "number" ? CONFIG.volumeEnvelope : 0.15;
     }
 
     // 2. Preenche os campos e imagens do convite
@@ -62,6 +62,40 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// CONTROLE DE FADE-OUT SUAVE DO ÁUDIO DE FUNDO
+let intervaloFadeAudio = null;
+
+function iniciarFadeOutMusica(audioElement) {
+  if (!audioElement) return;
+  if (intervaloFadeAudio) clearInterval(intervaloFadeAudio);
+
+  const volInicial = (typeof CONFIG !== "undefined" && typeof CONFIG.volumeMusicaInicial === "number") ? CONFIG.volumeMusicaInicial : 0.85;
+  const volFinal = (typeof CONFIG !== "undefined" && typeof CONFIG.volumeMusicaFinal === "number") ? CONFIG.volumeMusicaFinal : 0.22;
+  const duracaoSeg = (typeof CONFIG !== "undefined" && typeof CONFIG.duracaoFadeSegundos === "number") ? CONFIG.duracaoFadeSegundos : 18;
+
+  audioElement.volume = volInicial;
+
+  // Mantém o volume de impacto por 2 segundos ao abrir o envelope e depois inicia o fade-out gradual
+  setTimeout(() => {
+    const passos = duracaoSeg * 10; // Atualiza a cada 100ms
+    const decremento = (volInicial - volFinal) / passos;
+    let passoAtual = 0;
+
+    intervaloFadeAudio = setInterval(() => {
+      if (audioElement.paused) return;
+      passoAtual++;
+      const novoVolume = Math.max(volFinal, volInicial - (decremento * passoAtual));
+      audioElement.volume = novoVolume;
+
+      if (passoAtual >= passos || novoVolume <= volFinal) {
+        audioElement.volume = volFinal;
+        clearInterval(intervaloFadeAudio);
+        intervaloFadeAudio = null;
+      }
+    }, 100);
+  }, 2000);
+}
+
 // ABRIR CONVITE (EXECUTA SOM E NAVEGAÇÃO AO CLICAR NO ENVELOPE)
 function abrirConvite() {
   const telaEnvelope = document.getElementById("tela-envelope");
@@ -69,17 +103,18 @@ function abrirConvite() {
   const audioFundo = document.getElementById("audio-fundo");
   const audioEnvelope = document.getElementById("audio-envelope");
 
-  // 1. Toca o efeito do envelope abrindo
+  // 1. Toca o efeito do envelope abrindo com volume mais baixo e suave
   if (audioEnvelope) {
     audioEnvelope.currentTime = 0;
+    audioEnvelope.volume = (typeof CONFIG !== "undefined" && typeof CONFIG.volumeEnvelope === "number") ? CONFIG.volumeEnvelope : 0.15;
     audioEnvelope.play().catch(err => console.log("Erro ao tocar efeito do envelope:", err));
   }
 
-  // 2. Toca a música de fundo e ajusta o volume de forma garantida
+  // 2. Toca a música de fundo mais alta ao abrir e aplica fade-out suave
   if (audioFundo) {
     audioFundo.muted = false;
     audioFundo.currentTime = 0;
-    audioFundo.volume = 0.35; // Volume suave a 35%
+    iniciarFadeOutMusica(audioFundo);
     audioFundo.play().catch(err => console.log("Erro ao iniciar música de fundo:", err));
   }
 
