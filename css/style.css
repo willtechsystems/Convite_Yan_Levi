@@ -172,7 +172,49 @@ body {
 .instrucao-envelope {
   color: #6c7a65;
   font-size: 0.9rem;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
+}
+
+/* AVISO PULSANTE PARA AUMENTAR O SOM ANTES DE ABRIR O ENVELOPE */
+.aviso-som-envelope {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--bege-creme);
+  border: 1.5px dashed var(--borda-salvia);
+  color: var(--verde-escuro);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(78, 102, 66, 0.1);
+  animation: pulsarAvisoSom 2.2s infinite ease-in-out;
+}
+
+.icone-som-onda {
+  display: inline-block;
+  font-size: 0.95rem;
+  animation: balancarSom 1.4s infinite ease-in-out;
+}
+
+@keyframes pulsarAvisoSom {
+  0%, 100% {
+    transform: scale(1);
+    border-color: var(--borda-salvia);
+  }
+  50% {
+    transform: scale(1.03);
+    border-color: var(--verde-salvia);
+    background: var(--verde-claro);
+  }
+}
+
+@keyframes balancarSom {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-10deg) scale(1.12); }
+  75% { transform: rotate(10deg) scale(1.12); }
 }
 
 .envelope-palco {
