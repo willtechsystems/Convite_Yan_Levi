@@ -52,9 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const txtLocal = document.getElementById("txt-local");
     if (txtLocal) {
+      const tituloLocal = CONFIG.localNome || "Endereço da Comemoração";
       const endereco = CONFIG.localEndereco || "";
-      const plusCode = CONFIG.localPlusCode ? `<span class="badge-pluscode">📍 ${CONFIG.localPlusCode}</span>` : "";
-      txtLocal.innerHTML = `<strong>Endereço da Comemoração:</strong><br>${endereco}${plusCode ? `<br>${plusCode}` : ""}`;
+      txtLocal.innerHTML = `<strong>📍 ${tituloLocal}:</strong><br>${endereco}`;
     }
 
     const linkMaps = document.getElementById("link-maps");

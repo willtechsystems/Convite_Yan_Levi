@@ -17,9 +17,8 @@ const CONFIG = {
   horario: "ÀS 19:00",
 
   // Endereço e Localização do Evento
-  localNome: "Local do Evento",
+  localNome: "Endereço da Comemoração",
   localEndereco: "R. Águas Claras, 113 - Araguaína, TO, 77824-230",
-  localPlusCode: "RQ9V+QV Araguaína, TO",
   linkGoogleMaps: "https://www.google.com/maps/search/?api=1&query=R.+%C3%81guas+Claras,+113,+Aragua%C3%ADna+-+TO,+77824-230+(RQ9V%2BQV)",
 
   // Áudios do Convite (Coloque a música escolhida pela cliente como assets/som_fundo.mp3)
@@ -39,14 +38,14 @@ const CONFIG = {
       nome: "Pingo de Gente",
       descricao: "Enxovais, roupas e acessórios infantis",
       endereco: "Av. Cônego João Lima, 1730 - Centro, Araguaína - TO, 77804-010",
-      referencia: "Em frente à loja Nosso Lar (Plus Code: RQ5P+MV)",
+      referencia: "Em frente à loja Nosso Lar",
       linkMaps: "https://www.google.com/maps/search/?api=1&query=Av.+C%C3%B4nego+Jo%C3%A3o+Lima,+1730+-+Centro,+Aragua%C3%ADna+-+TO,+77804-010"
     },
     {
       nome: "Estação Materna",
       descricao: "Moda gestante, enxoval e artigos infantis",
       endereco: "Av. 1º de Janeiro, nº 920 – Setor Central, Araguaína - TO, 77803-140",
-      referencia: "Quadra 2, Lote 4, Sala 1 (Plus Code: RQ5Q+84)",
+      referencia: "Quadra 2, Lote 4, Sala 1",
       linkMaps: "https://www.google.com/maps/search/?api=1&query=Av.+1%C2%BA+de+Janeiro,+920+-+Setor+Central,+Aragua%C3%ADna+-+TO,+77803-140"
     }
   ],
