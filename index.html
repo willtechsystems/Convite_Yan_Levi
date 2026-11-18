@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="robots" content="noindex, nofollow">
-  <title>Convite Especial | Ágatha</title>
-  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <title>Chá de Bebê | Yan Levi</title>
+  <link rel="stylesheet" href="css/style.css?v=8.0">
 </head>
 <body>
 
@@ -14,11 +14,16 @@
   <audio id="audio-envelope" preload="auto"></audio>
 
   <main class="card-container">
-    
+    <!-- LAÇO DECORATIVO NO TOPO DO CARD (ESTILO GINGHAM DA REFERÊNCIA) -->
+    <div class="laco-topo-wrapper">
+      <img id="img-laco-topo" src="assets/laco_topo.png" alt="Laço Decorativo">
+    </div>
+
     <!-- TELA 1: CAPA COM ENVELOPE -->
     <div id="tela-envelope" class="secao-envelope" onclick="abrirConvite()">
+      <span class="tag-envelope">CHÁ DE BEBÊ • YAN LEVI</span>
       <h2 class="titulo-envelope">Você recebeu um convite especial!</h2>
-      <p class="instrucao-envelope">Clique no envelope para abrir</p>
+      <p class="instrucao-envelope">Toque no envelope para abrir</p>
       <div class="envelope-wrapper">
         <img id="img-envelope" src="assets/envelope.png" alt="Envelope do Convite">
       </div>
@@ -26,23 +31,41 @@
 
     <!-- TELA 2: CONTEÚDO PRINCIPAL (INICIA OCULTO) -->
     <div id="tela-principal" class="secao-principal oculto">
-      <span class="subtitulo-topo">VAMOS COMEMORAR!</span>
-      <h1 id="txt-nome" class="nome-destaque"></h1>
-      <h2 id="txt-idade" class="idade-destaque"></h2>
+      <span id="txt-subtitulo" class="subtitulo-topo">CHÁ DE BEBÊ</span>
+
+      <!-- ILUSTRAÇÃO CENTRAL: PATINHO NO BALÃO -->
+      <div class="ilustracao-central-wrapper">
+        <img id="img-tema" src="assets/patinho_balao.png" alt="Chá do Yan Levi">
+      </div>
+
+      <h1 id="txt-nome" class="nome-destaque">Yan Levi</h1>
 
       <!-- FRASE TEMÁTICA -->
       <p id="txt-frase" class="frase-tema"></p>
 
+      <!-- DATA EM DESTAQUE ESTILO CLÁSSICO (3 COLUNAS IGUAL À REFERÊNCIA) -->
+      <div class="grade-data-classica">
+        <div class="col-data-lateral">
+          <span id="txt-dia-semana">DOMINGO</span>
+        </div>
+        <div class="col-data-centro">
+          <strong id="txt-dia-numero">13</strong>
+          <small id="txt-mes-ano">DEZEMBRO • 2026</small>
+        </div>
+        <div class="col-data-lateral">
+          <span id="txt-horario">ÀS 19:00</span>
+        </div>
+      </div>
+
+      <!-- BLOCO DE ENDEREÇO DO EVENTO -->
       <div class="bloco-data-local">
-        <p id="txt-data" class="txt-data"></p>
-        <p id="txt-horario" class="txt-horario"></p>
         <p id="txt-local" class="txt-local"></p>
       </div>
 
       <!-- BOTÕES DE INTERAÇÃO -->
       <nav class="botoes-container">
-        <button class="btn btn-principal" onclick="abrirModalPresentes()">🎁 SUGESTÃO DE PRESENTE</button>
-        <a id="link-maps" class="btn btn-principal" target="_blank" rel="noopener noreferrer">📍 LOCALIZAÇÃO</a>
+        <button class="btn btn-principal" onclick="abrirModalPresentes()">🎁 SUGESTÃO DE PRESENTES / LOJAS</button>
+        <a id="link-maps" class="btn btn-principal" target="_blank" rel="noopener noreferrer">📍 LOCALIZAÇÃO DO EVENTO</a>
         <button class="btn btn-destaque" onclick="confirmarPresenca()">✅ CONFIRMAR PRESENÇA</button>
       </nav>
 
@@ -58,16 +81,24 @@
 
   </main>
 
-  <!-- MODAL DE PRESENTES -->
-  <div id="modal-presentes" class="modal-overlay">
+  <!-- MODAL DE PRESENTES E LOJAS PARCEIRAS -->
+  <div id="modal-presentes" class="modal-overlay" onclick="fecharModalSeClicarFora(event)">
     <div class="modal-card">
-      <h3>Sugestões de Presentes</h3>
+      <img src="assets/patinho_laco.png" alt="Patinho" class="modal-icone-topo">
+      <h3>Sugestão de Presentes</h3>
+      <p class="modal-subtitulo">As sugestões de presentes do <strong>Yan Levi</strong> já estão separadas com carinho nas lojas abaixo em Araguaína:</p>
+      
+      <!-- LISTA DE LOJAS COM ENDEREÇO E MAPA -->
+      <div id="lista-lojas" class="lista-lojas"></div>
+
+      <!-- LISTA EXTRA OPCIONAL (FRALDAS / MIMOS) -->
       <ul id="lista-presentes"></ul>
+
       <button class="btn btn-fechar" onclick="fecharModalPresentes()">Fechar</button>
     </div>
   </div>
 
-  <script src="js/config.js?v=7.0"></script>
-  <script src="js/main.js?v=7.0"></script>
+  <script src="js/config.js?v=8.0"></script>
+  <script src="js/main.js?v=8.0"></script>
 </body>
 </html>
